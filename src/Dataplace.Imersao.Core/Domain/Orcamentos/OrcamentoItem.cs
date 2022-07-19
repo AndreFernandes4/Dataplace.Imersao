@@ -47,10 +47,14 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
         private void CalcularTotal()
         {
             if (Quantidade < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(Quantidade));
+            }
 
             if (PrecoVenda < 0)
+            {
                 new ArgumentOutOfRangeException(nameof(PrecoVenda));
+            }
 
             Total = Quantidade * PrecoVenda;
         }

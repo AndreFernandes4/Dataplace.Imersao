@@ -18,10 +18,14 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos.ValueObjects
         public OrcamentoItemPrecoTotal(decimal precoTabela, decimal precoVenda) 
         {
             if(precoTabela <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(precoTabela));
+            }
 
             if (precoVenda <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(precoVenda));
+            }
 
             this.PrecoTabela = precoTabela;
             this.PrecoVenda = precoVenda;
@@ -34,7 +38,9 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos.ValueObjects
         public OrcamentoItemPrecoPercentual(decimal precoTabela, decimal perAltPreco) 
         {
             if (precoTabela <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(precoTabela));
+            }
 
             this.PrecoTabela = precoTabela;
             this.PercAltPreco = perAltPreco;
@@ -42,9 +48,13 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos.ValueObjects
             var decontoAcrescimo = precoTabela * Math.Abs(perAltPreco) / 100;
 
             if (perAltPreco < 0)
+            {
                 this.PrecoVenda = this.PrecoTabela - decontoAcrescimo;
+            }
             else
+            {
                 this.PrecoVenda = this.PrecoTabela + decontoAcrescimo;
+            }
         }
     }
 }
